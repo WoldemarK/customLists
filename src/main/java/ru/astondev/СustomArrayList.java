@@ -18,9 +18,11 @@ public class СustomArrayList<T> implements СustomList<T> {
     private final Logger log = Logger.getLogger(СustomArrayList.class.getName());
     private T[] elements;
     private int size;
+
     public СustomArrayList() {
         this.elements = (T[]) new Object[16];
     }
+
     public СustomArrayList(int capacity) {
         if (capacity >= 0) {
             this.elements = (T[]) new Object[capacity];
@@ -241,12 +243,18 @@ public class СustomArrayList<T> implements СustomList<T> {
 
     public T remove(int index) {
         log.info("Удаление элемента  его индексу  " + index);
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
         T element = (T) get(index);
+
         for (int i = index; i < size - 1; i++) {
-            elements[i] = elements[i + 1];
+           elements[i] = null;
         }
         size--;
         return element;
+
+
 
     }
 
