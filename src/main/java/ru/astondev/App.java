@@ -18,6 +18,9 @@ public class App {
         integer.add(3);
         integer.add(6);
 
+        integer.add(100,77);
+        integer.getAll();
+
         QuickSort.quickSort(integer,0,7);
 
         for (int i = 0; i < integer.size(); i++) {

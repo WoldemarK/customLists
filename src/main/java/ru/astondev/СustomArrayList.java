@@ -108,8 +108,11 @@ public class СustomArrayList<T> implements СustomList<T> {
 
     public void add(int index, T element) {
         log.info("Добавление элемента в коллекцию по index  " + index + ", элемент " + element);
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Index равен 0, или index больше чем длинна");
+        if (index < 0) {
+            throw new IndexOutOfBoundsException("Введенный индекс не может быть найден");
+        }
+        if (index > size) {
+            increaseCapacity(index * 2);
         }
         add(element);
 
@@ -190,7 +193,7 @@ public class СustomArrayList<T> implements СustomList<T> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Размер меньше 0 или размер вышел за пределы размера");
         }
-       return (T)elements[index];
+        return (T) elements[index];
 
     }
 
