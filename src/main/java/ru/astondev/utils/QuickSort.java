@@ -14,11 +14,9 @@ public class QuickSort<T> {
             quickSort(tСustomList, pivotIndex + 1, high);
         }
     }
-
     private static  <T extends Comparable<T>> int partition(СustomList<T> tСustomList, int low, int high) {
         T pivotValue = tСustomList.get(high);
         int i = low;
-
         for (int j = low; j < high; j++) {
             if (tСustomList.get(j).compareTo(pivotValue) < 0) {
                 swap(tСustomList, i, j);
@@ -28,7 +26,6 @@ public class QuickSort<T> {
         swap(tСustomList, i, high);
         return i;
     }
-
     private static  <T> void swap(СustomList<T> tСustomList, int i, int j) {
         T temp = tСustomList.get(i);
         tСustomList.set(i, tСustomList.get(j));
