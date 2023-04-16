@@ -1,17 +1,29 @@
 package ru.astondev;
 
+
+import ru.astondev.utils.QuickSort;
+
+
+
 public class App {
     public static void main(String[] args) {
-        СustomList<Integer> integerСustomList = new СustomArrayList<>();
+        СustomList<Integer>integer = new СustomArrayList<>();
 
-        integerСustomList.add(1);
-        integerСustomList.add(2);
-        integerСustomList.add(3);
+        integer.add(8);
+        integer.add(5);
+        integer.add(7);
+        integer.add(1);
+        integer.add(4);
+        integer.add(2);
+        integer.add(3);
+        integer.add(6);
 
-        integerСustomList.getAll();
+        QuickSort.quickSort(integer,0,7);
 
-        integerСustomList.remove(1);
-        integerСustomList.getAll();
+        for (int i = 0; i < integer.size(); i++) {
+            System.out.println(integer.get(i)+"\n");
+        }
+
 
     }
 }

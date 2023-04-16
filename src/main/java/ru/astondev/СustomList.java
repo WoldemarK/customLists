@@ -32,7 +32,7 @@ public interface СustomList<T> {
      * @param index получение элемента
      * @return вернет элемент под index
      */
-    Object get(int index);
+    T get(int index);
 
     /**
      * Данный метод предназначен для вставки элемента по index {@link СustomArrayList#set(int, Object)} )}

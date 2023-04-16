@@ -82,6 +82,7 @@ public class СustomArrayList<T> implements СustomList<T> {
         return -1;
     }
 
+
     /**
      * Добавление списка селекции
      *
@@ -184,17 +185,13 @@ public class СustomArrayList<T> implements СustomList<T> {
      * выкинет исключение IndexOutOfBoundsException
      */
 
-    public Object get(int index) {
+    public T get(int index) {
         log.info("Получение искомого элемента по index  " + index);
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Размер меньше 0 или размер вышел за пределы размера");
         }
-        for (int i = 0; i < elements.length; i++) {
-            if (i == index) {
-                return elements[i];
-            }
-        }
-        return index;
+       return (T)elements[index];
+
     }
 
     /**
@@ -249,11 +246,10 @@ public class СustomArrayList<T> implements СustomList<T> {
         T element = (T) get(index);
 
         for (int i = index; i < size - 1; i++) {
-           elements[i] = null;
+            elements[i] = null;
         }
         size--;
         return element;
-
 
 
     }

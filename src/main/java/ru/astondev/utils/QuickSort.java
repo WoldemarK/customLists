@@ -7,31 +7,32 @@ import ru.astondev.СustomList;
  * вынес метод в отдельный клас что бы не перегружать класс MyArrayList
  */
 public class QuickSort<T> {
-    public <T extends Comparable<T>> void quickSort(СustomList<Integer> tСustomList, int low, int high) {
-        if (tСustomList.size() == 0) return;
-        if (low >= high) return;
-        int middle = low + (high - low) / 2;
-        int opora = tСustomList.indexOf(middle);
-        int i = low, j = high;
-        while (i <= j) {
-            while (tСustomList.indexOf(i) < opora) {
+    public static  <T extends Comparable<T>> void quickSort(СustomList<T> tСustomList, int low, int high) {
+        if (low < high) {
+            int pivotIndex = partition(tСustomList, low, high);
+            quickSort(tСustomList, low, pivotIndex - 1);
+            quickSort(tСustomList, pivotIndex + 1, high);
+        }
+    }
+
+    private static  <T extends Comparable<T>> int partition(СustomList<T> tСustomList, int low, int high) {
+        T pivotValue = tСustomList.get(high);
+        int i = low;
+
+        for (int j = low; j < high; j++) {
+            if (tСustomList.get(j).compareTo(pivotValue) < 0) {
+                swap(tСustomList, i, j);
                 i++;
-            }
-            while (tСustomList.indexOf(j) > opora) {
-                j--;
-            }
-            if (i <= j) {
-                Integer temp = (Integer) tСustomList.get(i);
-                tСustomList.set(i, (Integer) tСustomList.get(j));
-                tСustomList.set(j, temp);
-                i++;
-                j--;
             }
         }
-        if (low < j)
-            quickSort(tСustomList, low, j);
-        if (high > i)
-            quickSort(tСustomList, i, high);
+        swap(tСustomList, i, high);
+        return i;
+    }
+
+    private static  <T> void swap(СustomList<T> tСustomList, int i, int j) {
+        T temp = tСustomList.get(i);
+        tСustomList.set(i, tСustomList.get(j));
+        tСustomList.set(j, temp);
     }
 
 }
